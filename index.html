@@ -6,8 +6,9 @@
 		<link href="libs/elements.css" rel="stylesheet"/>
 	<head>
 	<body>
+		<button id="addShape">Add Shape</button>
 		<div class="demo statemachine-demo" id="statemachine-demo">
-			<div class="w decide" id="opened" data-shape="Diamond">BEGIN
+			<!--<div class="w decide" id="opened">BEGIN
 				<div class="ep"></div>
 			</div>
 			<div class="w decide" id="phone1">PHONE INTERVIEW 1
@@ -21,16 +22,17 @@
 			</div>
 			<div class="w" id="rejected">REJECTED
 				<div class="ep"></div>
-			</div>
+			</div>-->
 		</div>
 	</body>
 	<script src="libs/jquery-1.9.1.js"></script>
 	<script src="libs/jquery-ui.js"></script>
 	<script src="libs/jquery.jsPlumb-1.5.5-min.js"></script>
 	<script>
+		var instance;
+		var elm_id = 0;
 		jsPlumb.ready(function () {
-			// setup some defaults for jsPlumb.	
-			var instance = jsPlumb.getInstance({
+			instance = jsPlumb.getInstance({
 				Endpoint: ["Dot", {
 					radius: 2
 				}],
@@ -46,7 +48,7 @@
 						foldback: 0.5
 					}],
 					["Label", {
-						label: "FOO",
+						label: "",
 						id: "label",
 						cssClass: "aLabel"
 					}]
@@ -54,35 +56,36 @@
 				Container: "statemachine-demo"
 			});
 
-			var windows = jsPlumb.getSelector(".statemachine-demo .w");
-
-			// initialise draggable elements.  
-			instance.draggable(windows);
-
-			// bind a click listener to each connection; the connection is deleted. you could of course
-			// just do this: jsPlumb.bind("click", jsPlumb.detach), but I wanted to make it clear what was
-			// happening.
-			instance.bind("click", function (c) {
+			/*instance.bind("click", function (c) {
 				instance.detach(c);
-			});
+			});*/
 
-			// bind a connection listener. note that the parameter passed to this function contains more than
-			// just the new connection - see the documentation for a full list of what is included in 'info'.
-			// this listener sets the connection's internal
-			// id as the label overlay's text.
 			instance.bind("connection", function (info) {
-				info.connection.getOverlay("label").setLabel(info.connection.id);
+				//info.connection.getOverlay("label").setLabel(info.connection.id);
+				var label = prompt('Action');
+				/*if(label == '')
+					instance.detach(info.connection);
+				else*/
+					info.connection.getOverlay("label").setLabel(label);
 			});
-
-			// suspend drawing and initialise.
+			
+			instance.bind("contextmenu", function(){
+				//alert(1);
+			});
+		});
+	
+		$("#addShape").click(function(){
+			var shapeName = prompt('Name');
+			var shape = '<div class="w" id="eml_'+elm_id+'">'+shapeName+'<div class="ep"></div></div>';
+			$("#statemachine-demo").append(shape);
+			$("#eml_"+elm_id).click(function(e){
+				//alert($(this).attr('id'));
+			});
+			elm_id++;
 			instance.doWhileSuspended(function () {
-
-				// make each ".ep" div a source and give it some parameters to work with.  here we tell it
-				// to use a Continuous anchor and the StateMachine connectors, and also we give it the
-				// connector's paint style.  note that in this demo the strokeStyle is dynamically generated,
-				// which prevents us from just setting a jsPlumb.Defaults.PaintStyle.  but that is what i
-				// would recommend you do. Note also here that we use the 'filter' option to tell jsPlumb
-				// which parts of the element should actually respond to a drag start.
+				var windows = jsPlumb.getSelector(".statemachine-demo .w");
+				instance.draggable(windows);
+				
 				instance.makeSource(windows, {
 					filter: ".ep", // only supported by jquery
 					anchor: "Continuous",
@@ -101,33 +104,15 @@
 					}
 				});
 
-				// initialise all '.w' elements as connection targets.
 				instance.makeTarget(windows, {
 					dropOptions: {
 						hoverClass: "dragHover"
 					},
 					anchor: "Continuous"
 				});
-
-				// and finally, make a couple of connections
-				instance.connect({
-					source: "opened",
-					target: "phone1"
-				});
-				instance.connect({
-					source: "phone1",
-					target: "inperson"
-				});
-				instance.connect({
-					source: "phone1",
-					target: "phone1"
-				});
-				instance.connect({
-					source: "rejected",
-					target: "phone2"
-				});
 			});
-
 		});
+		
+		
 	</script>
 </html>
