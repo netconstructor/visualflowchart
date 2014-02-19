@@ -7,7 +7,7 @@
 	<head>
 	<body>
 		<button id="addShape">Add Shape</button>
-		<div class="demo statemachine-demo" id="statemachine-demo">
+		<div class="demo statemachine-demo" id="statemachine-demo" style="width: 700px; height: 500px; border: thin solid #000; margin-top: 30px;">
 			<!--<div class="w decide" id="opened">BEGIN
 				<div class="ep"></div>
 			</div>
@@ -84,7 +84,7 @@
 			elm_id++;
 			instance.doWhileSuspended(function () {
 				var windows = jsPlumb.getSelector(".statemachine-demo .w");
-				instance.draggable(windows);
+				instance.draggable(windows, { containment:".demo"});
 				
 				instance.makeSource(windows, {
 					filter: ".ep", // only supported by jquery
