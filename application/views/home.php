@@ -37,7 +37,25 @@
 						</div>
 					</div>
 					<div class="panel-body">
-						Panel content
+						<div class="row" style="margin-top: -15px; padding: 3px;background: #eaeaea;">
+							<div class="col-lg-12" style="">
+								<div class="btn-toolbar" role="toolbar">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default btn-sm">Left</button>
+										<button type="button" class="btn btn-default btn-sm">Middle</button>
+										<button type="button" class="btn btn-default btn-sm">Right</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-8">
+								
+							</div>
+							<div class="col-lg-4">
+								
+							</div>
+						</div>
 					</div>
 				</div>
 				
