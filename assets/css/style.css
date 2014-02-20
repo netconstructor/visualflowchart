@@ -1,7 +1,52 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
 html,body{
 	background: url('../img/brillant.png');
 	background-position: center center;
+	font-family: 'Open Sans', sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Open Sans', sans-serif;
 }
 .container{
 	margin-top: 10px;
+}
+.panel-main{
+	border-color: #b2b8c0;
+}
+.panel-main > .panel-heading{
+	color: #fff;
+	background-color: #445162;
+	border:1px solid #445162;
+}
+.panel-main > .panel-body{
+	
+}
+.panel-tools > .panel-heading{
+	background-color: #687a93;
+	font-size: 12px;
+	color: #fff;
+	margin-top: 15px;
+	padding: 5px 5px;
+}
+.panel-tools > .panel-body{
+	border: thin solid #b2b8c0;
+}
+.panel-main > .btn{
+	color: #fff;
+	background-color: #445162;
+	border: 0px;
+}
+.btn-link:hover{
+	text-decoration: none;
+}
+.stage{
+	position: relative;
+	min-height: 400px;
+	/*background: url('../img/gridme.png');*/
+	overflow: scroll;
+	margin: -15px;
+}
+.w.active{
+	background: #e2b94b;
 }
