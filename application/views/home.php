@@ -45,13 +45,6 @@
 										<button type="button" class="btn btn-default btn-sm fa-lg"><i class="fa fa-folder-open"></i></button>
 										<button type="button" class="btn btn-default btn-sm fa-lg"><i class="glyphicon glyphicon-check"></i></button>
 									</div>
-									<!--<div class="dropdown" style="display:inline-block;">
-										<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">Insert <span class="caret"></span></button>
-										<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-											<li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="addShape">Process step</a></li>
-											<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Decision step</a></li>
-										</ul>
-									</div>-->
 									<button type="button" class="btn btn-default btn-sm fa-lg"><i class="fa fa-plus-circle" id="addShape"></i></button>
 								</div>
 							</div>
@@ -62,7 +55,7 @@
 									<div class="panel-heading">Process</div>
 									<div class="panel-body">
 										<div class="fd process stage" id="process" style="height: 100%;">
-										
+											
 										</div>
 									</div>
 								</div>
@@ -82,6 +75,39 @@
 			</div>
 		</div>
 	</div>
+	<!--Add Step Modal-->
+	<div class="modal fade" id="mdStepSelect">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+					<h4 class="modal-title">Add Step</h4>
+				</div>
+				<div class="modal-body">
+					<form class="">
+						<div class="input-group">
+							<span class="input-group-addon">Step type</span>
+							<select class="form-control">
+								<option value=""></option>
+								<option value="MANUAL">Manual</option>
+								<option value="AUTO">Automatic</option>
+								<option value="REPORT">Report</option>
+							</select>
+						</div>
+						<br>
+						<div class="input-group">
+							<span class="input-group-addon">Step name</span>
+							<input type="text" class="form-control" placeholder="">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-primary">Add step</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

@@ -30,9 +30,14 @@
 }
 
 .w:hover {
-	background-color: #5c96bc;
-	color:white;
-
+	/*background-color: #5c96bc;
+	color:white;*/
+	box-shadow: 2px 2px 19px #444;
+	-o-box-shadow: 2px 2px 19px #444;
+	-webkit-box-shadow: 2px 2px 19px #444;
+	-moz-box-shadow: 2px 2px 19px #444;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
 }
 
 .aLabel {
@@ -57,7 +62,8 @@
 
 .ep {
 	position:absolute;
-	bottom: 37%;
+	/*bottom: 37%;*/
+	top: 5px;
 	right: 5px;
 	width:1em;
 	height:1em;
