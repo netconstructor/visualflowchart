@@ -1,14 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Process extends CI_Controller {
-
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('process_model');
+	}
+	
 	public function index()
 	{
 		$this->load->view('home');
 	}
 	
 	public function load($uid){
-		$this->load->view('process_designer');
+		$data['process'] = $this->process_model->load_process($uid);
+		//var_dump($data['process']);
+		$this->load->view('process_designer',$data);
 	}
 }
 
