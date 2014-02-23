@@ -13,6 +13,7 @@ class Process extends CI_Controller {
 	
 	public function load($uid){
 		$data['process'] = $this->process_model->load_process($uid);
+		$data['controllers'] = $this->process_model->get_controllers();
 		//var_dump($data['process']);
 		$this->load->view('process_designer',$data);
 	}

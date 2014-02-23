@@ -19,5 +19,32 @@ class process_model extends CI_Model{
 		$process['actions'] = $actions->result_array();
 		return $process;
 	}
+	
+	public function get_controllers(){
+		$controllers = array();
+		if ($handle = opendir('./application/controllers')) {
+			while (false !== ($entry = readdir($handle))) {
+				if ($entry != "." && $entry != ".." && strtolower(substr($entry, strrpos($entry, '.') + 1)) == 'php') {
+					array_push($controllers, $this->get_controller_classes($entry));
+				}
+			}
+			closedir($handle);
+		}
+		return $controllers;
+	}
+	
+	private function get_controller_classes($controller){
+		$tokens = token_get_all( file_get_contents('./application/controllers/'.$controller) );
+		$class_token = false;
+		foreach ($tokens as $token) {
+			if ( !is_array($token) ) continue;
+			if ($token[0] == T_CLASS) {
+				$class_token = true;
+			} else if ($class_token && $token[0] == T_STRING) {
+				return $token[1];
+				$class_token = false;
+			}
+		}
+	}
 }
 ?>

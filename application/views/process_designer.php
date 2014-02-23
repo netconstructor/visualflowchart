@@ -74,9 +74,21 @@
 							</div>
 							<div class="col-lg-3">
 								<div class="panel panel-tools">
-									<div class="panel-heading">Tools</div>
+									<div class="panel-heading">Properties</div>
 									<div class="panel-body">
-										
+										<form class="">
+											<div class="input-group">
+												<span class="input-group-addon">Module</span>
+												<select class="form-control">
+													<option value=""></option>
+													<?php
+														foreach($controllers as $controller)
+														echo '<option value="'.$controller.'">'.$controller.'</option>';
+													?>
+												</select>
+											</div>
+											<br>
+										</form>
 									</div>
 								</div>
 							</div>
