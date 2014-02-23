@@ -41,6 +41,8 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
+/*Remap all requests to route controller*/
+$route['(:any)'] = 'route/run';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
